@@ -6,8 +6,9 @@ import 'package:bloc_app/home_feature/infrastructure/exeptions/exeptions.dart';
 import 'package:dartz/dartz.dart';
 
 class AdvicerRepositoryImpl implements AdvicerRepository {
-  final AdvicerRemoteDataSource advicerRemoteDataSource =
-      AdvicerRemoteDataSourceImpl();
+  final AdvicerRemoteDataSource advicerRemoteDataSource;
+
+  AdvicerRepositoryImpl({required this.advicerRemoteDataSource});
 
   @override
   Future<Either<AdviceEntity, Failure>> getAdviceFromApi() async {

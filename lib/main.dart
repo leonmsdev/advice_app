@@ -4,7 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'home_feature/home_screen.dart';
 import 'home_feature/application/bloc/api_request_bloc.dart';
 
-void main() {
+import 'package:bloc_app/injection.dart' as di;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.init();
   runApp(const MyApp());
 }
 
@@ -20,12 +24,10 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: MultiBlocProvider(providers: [
-        BlocProvider(
-          create: (context) => ApiRequestBloc(),
-          child: const MyHomePage(title: 'Bloc App'),
-        ),
-      ], child: const MyHomePage(title: 'Flutter Demo Home Page')),
+      home: BlocProvider(
+        create: (context) => di.sl<ApiRequestBloc>(),
+        child: const MyHomePage(title: 'Bloc App'),
+      ),
     );
   }
 }
