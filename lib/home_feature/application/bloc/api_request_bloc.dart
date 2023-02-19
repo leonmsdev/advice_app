@@ -62,14 +62,14 @@ part './api_request_event.dart';
 part './api_request_state.dart';
 
 class ApiRequestBloc extends Bloc<ApiRequestEvent, ApiRequestState> {
-  final AdvicerUseCases usecase = AdvicerUseCases();
+  final AdvicerUseCases usecases;
 
-  ApiRequestBloc() : super(ApiRequestInitial()) {
+  ApiRequestBloc({required this.usecases}) : super(ApiRequestInitial()) {
     on<ApiRequestEvent>((event, emit) async {
       emit(ApiRequestLoading());
 
       Either<AdviceEntity, Failure> adviceOrFailure =
-          await usecase.getAdviceUsecase();
+          await usecases.getAdviceUsecase();
 
       //If usecase gives error than state retunres falure otherwise the advice get shown
       adviceOrFailure.fold(
