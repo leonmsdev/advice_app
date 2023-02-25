@@ -166,3 +166,11 @@ equatable: ^2.0.5 # used for creating mocks
 mockito: ^5.3.2 # used to comare two objects
 build_runner: ^2.3.3 # create fake class
 ```
+
+#
+### TDD Test Driven Design
+Test-Driven Development (TDD) is a software development methodology that involves writing automated unit tests before writing the actual code. These unit tests serve as a detailed specification of the desired functionality, acting as a guide during the implementation process.
+
+The process starts with writing abstract test cases that describe the expected behavior of the code. The developer then implements the logic, aiming to pass the test cases. If any of the test cases fail, the developer revises the code until all the tests pass, indicating that the code is functioning as expected.
+
+Using TDD helps developers catch and fix errors early in the development cycle, reducing the likelihood of bugs and increasing code quality. By ensuring that the code meets the desired specifications, TDD can lead to faster, more efficient development and a better end product.

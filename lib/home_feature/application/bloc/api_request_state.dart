@@ -12,16 +12,26 @@ part of './api_request_bloc.dart';
 @immutable
 abstract class ApiRequestState {}
 
-class ApiRequestInitial extends ApiRequestState {}
-
-class ApiRequestLoading extends ApiRequestState {}
-
-class ApiRequestLoaded extends ApiRequestState {
-  final String advice;
-  ApiRequestLoaded({required this.advice});
+class ApiRequestInitial extends ApiRequestState with EquatableMixin {
+  @override
+  List<Object?> get props => [];
 }
 
-class ApiRequestError extends ApiRequestState {
+class ApiRequestLoading extends ApiRequestState with EquatableMixin {
+  @override
+  List<Object?> get props => [];
+}
+
+class ApiRequestLoaded extends ApiRequestState with EquatableMixin {
+  final String advice;
+  ApiRequestLoaded({required this.advice});
+  @override
+  List<Object?> get props => [];
+}
+
+class ApiRequestError extends ApiRequestState with EquatableMixin {
   final String error;
   ApiRequestError({required this.error});
+  @override
+  List<Object?> get props => [];
 }

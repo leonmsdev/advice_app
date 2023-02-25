@@ -55,6 +55,7 @@ import 'package:bloc_app/home_feature/domain/entities/advice_entity.dart';
 import 'package:bloc_app/home_feature/domain/failures/failures.dart';
 import 'package:bloc_app/home_feature/domain/usecases/advicer_usecases.dart';
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 // ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 

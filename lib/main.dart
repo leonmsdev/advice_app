@@ -1,7 +1,7 @@
 import 'package:bloc_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'home_feature/home_screen.dart';
+import 'home_feature/presentation/screens/home_screen.dart';
 import 'home_feature/application/bloc/api_request_bloc.dart';
 
 import 'package:bloc_app/injection.dart' as di;
