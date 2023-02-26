@@ -18,7 +18,8 @@ Future<void> init() async {
   // Application
   sl.registerFactory(() => ApiRequestBloc(usecases: sl()));
 
-  sl.registerLazySingleton(() => ThemeServiceImpl(themeRepository: sl()));
+  sl.registerLazySingleton<ThemeService>(
+      () => ThemeServiceImpl(themeRepository: sl()));
 
   //Usecases
   sl.registerLazySingleton(() => AdvicerUseCases(advicerRepository: sl()));
