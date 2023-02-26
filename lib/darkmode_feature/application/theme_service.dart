@@ -1,4 +1,3 @@
-import 'package:bloc_app/darkmode_feature/infrastructure/repositories/theme_local_repository_impl.dart';
 import 'package:flutter/foundation.dart';
 
 import '../domain/repositories/theme_local_repository.dart';
@@ -20,20 +19,26 @@ class ThemeServiceImpl extends ChangeNotifier implements ThemeService {
   bool isDarkModeOn = true;
 
   @override
-  Future<void> init() {
-    // TODO: implement init
-    throw UnimplementedError();
+  Future<void> init() async {
+    final modeOrFailure = await themeRepository.getThemeMode();
+
+    modeOrFailure.fold((failure) {
+      setTheme(mode: true);
+    }, (mode) {
+      setTheme(mode: mode);
+    });
   }
 
   @override
-  Future<void> setTheme({required bool mode}) {
-    // TODO: implement setTheme
-    throw UnimplementedError();
+  Future<void> setTheme({required bool mode}) async {
+    isDarkModeOn = mode;
+    notifyListeners();
+    await themeRepository.setThemeMode(mode: isDarkModeOn);
   }
 
   @override
-  Future<void> toggleTheme() {
-    // TODO: implement toggleTheme
-    throw UnimplementedError();
+  Future<void> toggleTheme() async {
+    isDarkModeOn = !isDarkModeOn; //negate the value
+    await setTheme(mode: isDarkModeOn);
   }
 }
