@@ -1,3 +1,4 @@
+import 'package:bloc_app/darkmode_feature/presentation/toggle_theme_widget.dart';
 import 'package:bloc_app/home_feature/application/bloc/api_request_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,6 +18,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: const [ThemeSwitch()],
       ),
       body: Center(
         child: Padding(

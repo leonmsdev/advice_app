@@ -1,0 +1,1 @@
+class CacheExeption implements Exception {}

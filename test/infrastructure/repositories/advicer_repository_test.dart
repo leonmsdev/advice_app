@@ -23,7 +23,7 @@ void main() {
         advicerRemoteDataSource: mockAdvicerRemoteDataSource);
   });
 
-  group('getAdviceFromApi', () {
+  group('getAdviceFromApi()', () {
     final testAdviceModel = AdviceModel(advice: "test", id: 1);
     final AdviceEntity testAdvice = testAdviceModel;
 
