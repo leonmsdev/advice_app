@@ -14,6 +14,7 @@ bloc: ^8.1.1 # Install bloc
 flutter_bloc: ^8.1.2 # Install flutter bloc for state management
 http: ^0.13. # Handles api requests
 get_it: ^7.2.0 # Used for dependency injection
+shared_preferences: ^2.0.18 # store data local on device
 ```
 ##
 ### 2. Folder Structure
@@ -174,3 +175,56 @@ Test-Driven Development (TDD) is a software development methodology that involve
 The process starts with writing abstract test cases that describe the expected behavior of the code. The developer then implements the logic, aiming to pass the test cases. If any of the test cases fail, the developer revises the code until all the tests pass, indicating that the code is functioning as expected.
 
 Using TDD helps developers catch and fix errors early in the development cycle, reducing the likelihood of bugs and increasing code quality. By ensuring that the code meets the desired specifications, TDD can lead to faster, more efficient development and a better end product.
+
+*1.* create new file under domain layer
+  1.1 create an abstract class to describe local datasource
+```dart
+abstract class ThemeLocalDatasource {
+  Future<bool> getChachedThemeData();
+
+  Future<void> setCacheThemeData({required bool mode});
+}
+```
+  1.2 create an xImpl class that implements the abstract class
+  1.3 add the needed Function as empty functions
+  1.4 add dependencies and create constructor for the class that requires the dependencies from 1.3
+```dart
+class ThemeLocalDatasourceImpl implements ThemeLocalDatasource {
+  late SharedPreferences sharedPreferences;
+
+  ThemeLocalDatasourceImpl({required this.sharedPreferences});
+
+  @override
+  Future<bool> getChachedThemeData() {
+    // TODO: implement getChachedThemeData
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> setCacheThemeData({required bool mode}) {
+    // TODO: implement setCacheThemeData
+    throw UnimplementedError();
+  }
+}
+```
+  1.5 inject the dependencies inside injection.dart
+```dart
+  sl.registerLazySingleton<ThemeLocalDatasource>(
+      () => ThemeLocalDatasourceImpl(sharedPreferences: sl()));
+```
+  1.6 create instance of shared preferences, important to use await because we can an type <Future>
+```dart
+  final sharedPreferences = await SharedPreferences.getInstance();
+  sl.registerLazySingleton(() => sharedPreferences);
+```
+
+*2.* Write test for the local datasource
+
+*3.* Implemt the function and check if the unit test are valid
+
+
+
+
+
+
+
